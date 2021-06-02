@@ -18,6 +18,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      payload = { user_id: @user.id }
+      token = create_token(payload)
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -46,6 +48,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :password, :address)
+      params.require(:user).permit(:username, :password, :password_confirmation, :address, :avatar)
     end
 end

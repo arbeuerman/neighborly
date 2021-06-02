@@ -16,9 +16,10 @@ User.destroy_all
 User.reset_pk_sequence
 
 10.times do 
-    User.create(username: Faker::Movies::StarWars.character, 
+    User.create(username: Faker::Movies::StarWars.unique.character, 
     password: "1234abcd", 
-    address: Faker::Address.street_address)
+    address: Faker::Address.street_address,
+    avatar: Faker::Avatar.image)
 end
 
 10.times do 
