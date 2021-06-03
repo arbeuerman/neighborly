@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
     def authenticate
+        byebug
         if request.headers["Authorization"]
             begin 
                 auth_header = request.headers["Authorization"]
