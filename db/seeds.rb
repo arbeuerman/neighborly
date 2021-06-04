@@ -6,9 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Volunteer.destroy_all
-Volunteer.reset_pk_sequence
-
 Task.destroy_all
 Task.reset_pk_sequence
 
@@ -29,8 +26,4 @@ end
     category: Faker::Job.field,
     has_volunteer: false,
     user_id: User.all.sample.id)
-end
-
-3.times do 
-    Volunteer.create(user_id: User.all.sample.id, task_id: Task.all.sample.id)
 end
